@@ -1,0 +1,134 @@
+/* --- ABOUT SECTION CONTAINER --- */
+#about {
+    padding: 100px 10%;
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    /* Perspective kept for the lift effect on hover */
+    perspective: 1500px; 
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: 10px;
+    color: whitesmoke;
+    margin-bottom: 50px;
+    /* text-transform: uppercase; */
+    font-family: 'Righteous', sans-serif !important;
+    /* text-shadow: 0 0 20px rgba(42, 0, 254, 0.971); */
+}
+
+/* --- THE GRID --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+    gap: 25px;
+}
+
+/* --- THE NORMAL GLASS CARD (No Tilt) --- */
+.glass-card {
+    background: var(--glass-white);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px;
+    
+    /* REMOVED DEGREES: Card is now flat */
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform, box-shadow;
+}
+
+.glass-card:hover {
+    /* Only lift up and scale slightly - no rotation */
+    transform: translateY(-15px) scale(1.02);
+    background: rgba(255, 255, 255, 0.07); 
+    border-color: var(--primary-blue);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+
+.stat-number {
+    font-size: clamp(3.5rem, 10vw, 6rem);
+    font-family: 'Arial Black', sans-serif;
+    line-height: 1;
+    background: linear-gradient(to bottom, #fff, var(--primary-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(43, 0, 254, 0.4));
+}
+
+.tech-pill-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.tech-pill {
+    background: rgba(43, 0, 254, 0.1);
+    border: 1px solid rgba(43, 0, 254, 0.2);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.tech-pill:hover {
+    background: var(--primary-blue);
+    transform: translateY(-3px);
+}
+
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.project-tag {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+}
+
+.tool-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.tool-item i {
+    color: var(--primary-blue);
+}
+
+.vision-card {
+    grid-column: 1 / -1;
+    border: 1px dashed var(--primary-blue);
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    .glass-card {
+        padding: 30px;
+    }
+}
